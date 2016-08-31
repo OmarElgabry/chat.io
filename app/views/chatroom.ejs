@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Chat IO</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+  </head>
+  <body>
+    <a href="https://github.com/OmarElGabry/chat.io" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <div class="container clearfix">
+      <div class="chat">
+        <div class="chat-header clearfix">
+          <img src="<%= user.picture %>" alt="avatar">
+          <div class="chat-about">
+            <div class="chat-room"><%= room.title %></div>
+            <div class="chat-num-users"> User</div>
+          </div>
+          <i class="fa fa-users"></i>
+        </div> <!-- end chat-header -->
+        
+        <div class="chat-history">
+          <ul>
+          </ul>
+        </div> <!-- end chat-history -->
+        
+        <div class="chat-message clearfix">
+          <textarea name="message" placeholder ="Type your message" rows="3"></textarea> 
+          <button type="submit">Send</button>
+        </div> <!-- end chat-message -->
+      </div> <!-- end chat -->
+      
+      <div class="controls">
+          <a href="/logout" class="logout-btn">Logout</a>
+          <a href="/rooms" class="rooms-btn">Rooms</a>
+      </div>
+
+      <div class="users-list">
+        <ul class="list">
+        </ul>
+      </div>
+    </div> <!-- end container -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+    <script>$(function(){app.chat('<%= room.id %>', '<%= user.username %>')});</script>
+  </body>
+</html>
