@@ -4,7 +4,10 @@ var init = function () {
 
 	if(process.env.NODE_ENV === 'production') {
 		var redisURI 		= require('url').parse(process.env.REDIS_URL);
-		var redisPassword 	= redisURI.auth.split(':')[1];
+		var redisPassword = null;
+		if (redisURI.auth) {
+			redisPassword = redisURI.auth.split(':')[1];
+		}
 		return {
 			dbURI: process.env.dbURI,
 			sessionSecret: process.env.sessionSecret,
@@ -26,7 +29,7 @@ var init = function () {
 				password: redisPassword
 			}
 		}
-	} 
+	}
 	else {
 		return require('./config.json');
 	}
