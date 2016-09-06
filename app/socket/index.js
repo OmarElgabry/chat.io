@@ -15,14 +15,6 @@ var ioEvents = function(io) {
 	// Rooms namespace
 	io.of('/rooms').on('connection', function(socket) {
 
-		// Return a list of chatrooms
-		socket.on('getRooms', function() {
-			Room.find(function(err, rooms){
-				if(err) throw err;
-				socket.emit('updateRoomsList', rooms, true);
-			});
-		});
-
 		// Create a new room
 		socket.on('createRoom', function(title) {
 			Room.findOne({'title': new RegExp(title, 'i')}, function(err, room){

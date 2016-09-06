@@ -77,7 +77,10 @@ router.get('/auth/twitter/callback', passport.authenticate('twitter', {
 
 // Rooms
 router.get('/rooms', [User.isAuthenticated, function(req, res, next) {
-	res.render('rooms');
+	Room.find(function(err, rooms){
+		if(err) throw err;
+		res.render('rooms', { rooms });
+	});
 }]);
 
 // Chat Room 
@@ -88,7 +91,7 @@ router.get('/chat/:id', [User.isAuthenticated, function(req, res, next) {
 		if(!room){
 			return next(); 
 		}
-		res.render('chatroom', {user: req.user, room: room});
+		res.render('chatroom', { user: req.user, room: room });
 	});
 	
 }]);

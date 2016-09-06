@@ -17,7 +17,7 @@
         <div class="room-header clearfix">
           <div class="room-about">
             <div class="room-title">Rooms</div>
-            <div class="room-num-rooms">13 Room</div>
+            <div class="room-num-rooms"><%= rooms.length %> Room(s)</div>
           </div>
           <i class="fa fa-th-list"></i>
         </div> <!-- end room-header -->
@@ -29,7 +29,13 @@
 
         <div class="room-list">
           <ul>
-            <p class="message" style="text-align: center; padding: 0; margin: 0;">Create your first room!</p>
+            <% if(rooms.length > 0) { %>
+              <% rooms.forEach(function(room) { %>
+                  <a href="/chat/<%= room.id %>"><li class="room-item"><%= room.title %></li></a>
+                <% }); %>
+            <% } else { %>
+              <p class="message" style="text-align: center; padding: 0; margin: 0;">Create your first room!</p>
+            <% } %>
           </ul>
         </div> <!-- end room-list -->
       </div> <!-- end room -->
