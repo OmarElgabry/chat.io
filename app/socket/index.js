@@ -17,7 +17,7 @@ var ioEvents = function(io) {
 
 		// Create a new room
 		socket.on('createRoom', function(title) {
-			Room.findOne({'title': new RegExp(title, 'i')}, function(err, room){
+			Room.findOne({'title': new RegExp('^' + title + '$', 'i')}, function(err, room){
 				if(err) throw err;
 				if(room){
 					socket.emit('updateRoomsList', { error: 'Room title already exists.' });

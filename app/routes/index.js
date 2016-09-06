@@ -41,7 +41,7 @@ router.post('/register', function(req, res, next) {
 	}else{
 
 		// Check if the username already exists for non-social account
-		User.findOne({'username': new RegExp(req.body.username, 'i'), 'socialId': null}, function(err, user){
+		User.findOne({'username': new RegExp('^' + req.body.username + '$', 'i'), 'socialId': null}, function(err, user){
 			if(err) throw err;
 			if(user){
 				req.flash('error', 'Username already exists.');
