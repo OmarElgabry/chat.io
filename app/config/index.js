@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 
 var init = function () {
 
@@ -26,7 +26,7 @@ var init = function () {
 				password: redisPassword
 			}
 		}
-	} 
+	}
 	else {
 		return require('./config.json');
 	}
