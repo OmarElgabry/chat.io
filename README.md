@@ -1,6 +1,9 @@
 ![Screenshot](https://raw.githubusercontent.com/OmarElGabry/chat.io/master/public/img/chat.io.gif)
 
 # chat.io
+[![Dependency Status](https://www.versioneye.com/user/projects/57d746d1df40d0004a4a9e21/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57d746d1df40d0004a4a9e21)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/OmarElGabry/chat.io/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/OmarElGabry/chat.io/?branch=master)
+[![Code Climate](https://codeclimate.com/github/OmarElGabry/chat.io/badges/gpa.svg)](https://codeclimate.com/github/OmarElGabry/chat.io)
 
 A Real Time Chat Application built using Node.js, Express, Mongoose, Socket.io, Passport, & Redis.
 
@@ -66,6 +69,10 @@ Make sure you have the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed
 	$ heroku create
 	$ git push heroku master
 	```
+	
+	or
+	
+	[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 2. Now, you need to set up configuration variables on Heroku. 
 	1. Go to Settings -> Reveal Config Vars.
@@ -82,6 +89,8 @@ Make sure you have the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed
 	```
 	$ heroku open
 	```
+
+
 
 ## How It Works<a name="how-it-works"></a>
 ### Setup Configurations<a name="configurations"></a>
