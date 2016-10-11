@@ -24,8 +24,9 @@ var app = {
       // Whenever the user hits the create button, emit createRoom event.
       $('.room-create button').on('click', function(e) {
         var inputEle = $("input[name='title']");
-        if(inputEle.val() !== '') {
-          socket.emit('createRoom', inputEle.val());
+        var roomTitle = inputEle.val().trim();
+        if(roomTitle !== '') {
+          socket.emit('createRoom', roomTitle);
           inputEle.val('');
         }
       });
@@ -57,9 +58,10 @@ var app = {
         $(".chat-message button").on('click', function(e) {
 
           var textareaEle = $("textarea[name='message']");
-          if(textareaEle.val() !== '') {
+          var messageContent = textareaEle.val().trim();
+          if(messageContent !== '') {
             var message = { 
-              content: textareaEle.val(), 
+              content: messageContent, 
               username: username,
               date: Date.now()
             };
