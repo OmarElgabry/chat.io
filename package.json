@@ -31,7 +31,7 @@
     "passport-twitter": "^1.0.4",
     "redis": "^2.6.2",
     "socket.io": "^1.4.8",
-    "socket.io-redis": "^1.0.0",
+    "socket.io-redis": "^2.0.0",
     "winston": "^2.2.0"
   }
 }
