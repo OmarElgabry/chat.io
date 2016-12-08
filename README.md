@@ -78,7 +78,7 @@ Make sure you have the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed
 	1. Go to Settings -> Reveal Config Vars.
 	2. Add configuration variables. All needed variables are inside _app/config/index.js_. 
 	Typically, these are the configuration variables you need to assign: 
-	``` { dbURI, sessionSecret, facebookClientID, facebookClientSecret, twitterConsumerKey, twitterConsumerSecret } ```.
+	```{ dbURI, sessionSecret, facebookClientID, facebookClientSecret, twitterConsumerKey, twitterConsumerSecret }```(see [Setup Configurations](#configurations)).
 
 3. One last step is to add [Redis](http://redis.io/) as an Add-on on Heroku.
 	1. Go to Resources -> Add-ons
