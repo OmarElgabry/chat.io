@@ -5,7 +5,14 @@ var Mongoose 	= require('mongoose');
 var logger 		= require('../logger');
 
 // Connect to the database
-Mongoose.connect(config.dbURI);
+// construct the database URI and encode username and password.
+var dbURI = "mongodb://" + 
+			encodeURIComponent(config.db.username) + ":" + 
+			encodeURIComponent(config.db.password) + "@" + 
+			config.db.host + ":" + 
+			config.db.port + "/" + 
+			config.db.name;
+Mongoose.connect(dbURI);
 
 // Throw an error if the connection fails
 Mongoose.connection.on('error', function(err) {

@@ -6,7 +6,13 @@ var init = function () {
 		var redisURI 		= require('url').parse(process.env.REDIS_URL);
 		var redisPassword 	= redisURI.auth.split(':')[1];
 		return {
-			dbURI: process.env.dbURI,
+			db: {
+				username: process.env.dbUsername,
+				password: process.env.dbPassword,
+				host: process.env.dbHost,
+				port: process.env.dbPort,
+				name: process.env.dbName
+			},
 			sessionSecret: process.env.sessionSecret,
 			facebook: {
 				clientID: process.env.facebookClientID,

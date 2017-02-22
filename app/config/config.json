@@ -1,5 +1,11 @@
 {
-	"dbURI": "<MongoDBURI>",
+	"db": {
+		"username": "<MongoDBUsername>",
+		"password": "<MongoDBPassword>",
+		"host": "<MongoDBHost>",
+		"port": "<MongoDBPort>",
+		"name": "<MongoDBName>"
+	},
 	"sessionSecret": "<RandomString>",
 	"facebook": {
 		"clientID": "<AppID>",
