@@ -1,0 +1,31 @@
+version: '2'
+services:
+
+  redis:
+    image: redis:alpine
+    expose:
+      - "6379"
+    ports:
+      - "6379:6379"
+
+  mongo:
+    image: mongo
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+
+  web:
+    build: .
+    environment:
+      - NODE_ENV=production
+      - REDIS_URL=http://redis:6379
+      - dbURI=mongodb://mongo:27017
+      - sessionSecret=102987oakljsd01928
+      - facebookClientID=
+      - twitterConsumerKey=
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+      - mongo
