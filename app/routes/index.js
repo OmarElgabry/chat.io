@@ -3,6 +3,7 @@
 var express	 	= require('express');
 var router 		= express.Router();
 var passport 	= require('passport');
+var config		= require('../config');
 
 var User = require('../models/user');
 var Room = require('../models/room');
@@ -16,15 +17,17 @@ router.get('/', function(req, res, next) {
 	else{
 		res.render('login', {
 			success: req.flash('success')[0],
-			errors: req.flash('error'), 
-			showRegisterForm: req.flash('showRegisterForm')[0]
+			errors: req.flash('error'),
+			showRegisterForm: req.flash('showRegisterForm')[0],
+			showFacebook: config.facebook.clientID? true : false,
+			showTwitter: config.twitter.consumerKey ? true : false,
 		});
 	}
 });
 
 // Login
-router.post('/login', passport.authenticate('local', { 
-	successRedirect: '/rooms', 
+router.post('/login', passport.authenticate('local', {
+	successRedirect: '/rooms',
 	failureRedirect: '/',
 	failureFlash: true
 }));
@@ -60,20 +63,24 @@ router.post('/register', function(req, res, next) {
 
 // Social Authentication routes
 // 1. Login via Facebook
-router.get('/auth/facebook', passport.authenticate('facebook'));
-router.get('/auth/facebook/callback', passport.authenticate('facebook', {
+if (config.facebook.clientID) {
+	router.get('/auth/facebook', passport.authenticate('facebook'));
+	router.get('/auth/facebook/callback', passport.authenticate('facebook', {
 		successRedirect: '/rooms',
 		failureRedirect: '/',
 		failureFlash: true
-}));
+	}));
+}
 
 // 2. Login via Twitter
-router.get('/auth/twitter', passport.authenticate('twitter'));
-router.get('/auth/twitter/callback', passport.authenticate('twitter', {
+if (config.twitter.consumerKey) {
+	router.get('/auth/twitter', passport.authenticate('twitter'));
+	router.get('/auth/twitter/callback', passport.authenticate('twitter', {
 		successRedirect: '/rooms',
 		failureRedirect: '/',
 		failureFlash: true
-}));
+	}));
+}
 
 // Rooms
 router.get('/rooms', [User.isAuthenticated, function(req, res, next) {
@@ -83,17 +90,17 @@ router.get('/rooms', [User.isAuthenticated, function(req, res, next) {
 	});
 }]);
 
-// Chat Room 
+// Chat Room
 router.get('/chat/:id', [User.isAuthenticated, function(req, res, next) {
 	var roomId = req.params.id;
 	Room.findById(roomId, function(err, room){
 		if(err) throw err;
 		if(!room){
-			return next(); 
+			return next();
 		}
 		res.render('chatroom', { user: req.user, room: room });
 	});
-	
+
 }]);
 
 // Logout
