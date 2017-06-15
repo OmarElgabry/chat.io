@@ -1,0 +1,54 @@
+version: '2'
+services:
+  code:
+    image: ubuntu:16.04
+    volumes:
+      - ./:/usr/src/app
+  app:
+    image: node:boron
+    volumes_from:
+      - code
+    ports:
+      - "3000:3000"
+    links:
+      - redis
+      - mongodb
+    command: bash
+    tty: true
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - REDIS_URL=redis://redis:6379
+      - sessionSecret=keyboardcat
+      - dbUsername=uid
+      - dbPassword=pwd
+      - dbHost=mongodb
+      - dbPort=27017
+      - dbName=chatio
+      - EnableSocialAuth=false
+      - facebookClientID=""
+      - facebookClientSecret=""
+      - twitterConsumerKey=""
+      - twitterConsumerSecret=""
+  redis:
+    image: redis:alpine
+    expose:
+      - "6379"
+  mongodb:
+    image: mongo
+    volumes_from:
+      - mongodata
+    ports:
+      - "27017:27017"
+  mongoClientTemp:
+     image: mongo:latest
+     container_name: mongoClientTemp
+     links:
+      - mongodb
+     command: mongo --host mongodb --eval  "db.getSiblingDB('chatio').createUser({user:'uid', pwd:'pwd', roles:[{role:'readWrite',db:'chatio'}]});"
+     depends_on:
+      - mongodb
+  mongodata:
+    image: tianon/true
+    volumes:
+      - ./mongo/db:/data/db

@@ -60,8 +60,10 @@ var init = function(){
 	};
 
 	// Plug-in Facebook & Twitter Strategies
-	passport.use(new FacebookStrategy(config.facebook, verifySocialAccount));
-	passport.use(new TwitterStrategy(config.twitter, verifySocialAccount));
+    if	(process.env.EnableSocialAuth) {
+        passport.use(new FacebookStrategy(config.facebook, verifySocialAccount));
+        passport.use(new TwitterStrategy(config.twitter, verifySocialAccount));
+    }
 
 	return passport;
 }

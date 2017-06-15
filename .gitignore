@@ -3,3 +3,10 @@ node_modules
 
 # Logs
 debug.log
+
+# Keep mongo forlde
+/mongo/*
+!/mongo/.keepme
+
+# IDE config
+.idea/
