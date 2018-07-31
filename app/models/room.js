@@ -66,11 +66,14 @@ var getUsers = function(room, socket, callback){
 	// Loop on each user id, Then:
 	// Get the user object by id, and assign it to users array.
 	// So, users array will hold users' objects instead of ids.
+	var loadedUsers = 0;		
 	users.forEach(function(userId, i){
 		User.findById(userId, function(err, user){
 			if (err) { return callback(err); }
 			users[i] = user;
-			if(i + 1 === users.length){
+
+			// fire callback when all users are loaded (async) from database 
+			if(++loadedUsers === users.length){
 				return callback(null, users, cunt);
 			}
 		});
