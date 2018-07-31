@@ -94,6 +94,7 @@ var app = {
     // Update rooms list
     updateRoomsList: function(room){
       room.title = this.encodeHTML(room.title);
+      room.title = room.title.length > 25? room.title.substr(0, 25) + '...': room.title;
       var html = `<a href="/chat/${room._id}"><li class="room-item">${room.title}</li></a>`;
 
       if(html === ''){ return; }
