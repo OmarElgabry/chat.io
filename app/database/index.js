@@ -12,7 +12,7 @@ var dbURI = "mongodb://" +
 			config.db.host + ":" + 
 			config.db.port + "/" + 
 			config.db.name;
-Mongoose.connect(dbURI);
+Mongoose.connect(dbURI, { useNewUrlParser: true });
 
 // Throw an error if the connection fails
 Mongoose.connection.on('error', function(err) {
