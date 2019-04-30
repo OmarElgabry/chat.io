@@ -62,8 +62,8 @@ router.post('/register', function(req, res, next) {
 router.get('/rooms', [User.isAuthenticated, function(req, res, next) {
 	Room.find(function(err, rooms){
 		if(err) throw err;
-		var privaterooms = []
-		res.render('rooms', { rooms, privaterooms });
+		var users = []
+		res.render('rooms', { rooms, users });
 	});
 }]);
 
