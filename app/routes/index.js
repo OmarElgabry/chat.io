@@ -58,28 +58,12 @@ router.post('/register', function(req, res, next) {
 	}
 });
 
-// Social Authentication routes
-// 1. Login via Facebook
-// router.get('/auth/facebook', passport.authenticate('facebook'));
-// router.get('/auth/facebook/callback', passport.authenticate('facebook', {
-// 		successRedirect: '/rooms',
-// 		failureRedirect: '/',
-// 		failureFlash: true
-// }));
-
-// 2. Login via Twitter
-// router.get('/auth/twitter', passport.authenticate('twitter'));
-// router.get('/auth/twitter/callback', passport.authenticate('twitter', {
-// 		successRedirect: '/rooms',
-// 		failureRedirect: '/',
-// 		failureFlash: true
-// }));
-
 // Rooms
 router.get('/rooms', [User.isAuthenticated, function(req, res, next) {
 	Room.find(function(err, rooms){
 		if(err) throw err;
-		res.render('rooms', { rooms });
+		var privaterooms = []
+		res.render('rooms', { rooms, privaterooms });
 	});
 }]);
 
