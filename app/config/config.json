@@ -1,24 +1,12 @@
 {
 	"db": {
-		"username": "<MongoDBUsername>",
-		"password": "<MongoDBPassword>",
-		"host": "<MongoDBHost>",
-		"port": "<MongoDBPort>",
-		"name": "<MongoDBName>"
+		"username": "",
+		"password": "",
+		"host": "127.0.0.1",
+		"port": "27017",
+		"name": "chatapp"
 	},
-	"sessionSecret": "<RandomString>",
-	"facebook": {
-		"clientID": "<AppID>",
-		"clientSecret": "<AppSecret>",
-		"callbackURL": "/auth/facebook/callback",
-		"profileFields": ["id", "displayName", "photos"]
-	},
-	"twitter": {
-		"consumerKey": "<ConsumerKey>",
-		"consumerSecret": "<ConsumerSecret>",
-		"callbackURL": "/auth/twitter/callback",
-		"profileFields": ["id", "displayName", "photos"]
-	},
+	"sessionSecret": "bobo",
 	"redis": {
 		"host": "127.0.0.1",
 		"port": 6379,
