@@ -62,8 +62,16 @@ router.post('/register', function(req, res, next) {
 router.get('/rooms', [User.isAuthenticated, function(req, res, next) {
 	Room.find(function(err, rooms){
 		if(err) throw err;
-		var users = []
-		res.render('rooms', { rooms, users });
+		User.find(function(err, userstmp){
+			if(err) res.render('rooms', { rooms });
+			var users = []
+			userstmp.forEach(function(user) { 
+				if (!user._id.equals(req.user._id)){
+					users.push(user)
+				}
+			 })
+			res.render('rooms', { rooms, users });
+		})
 	});
 }]);
 

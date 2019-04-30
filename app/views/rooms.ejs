@@ -20,7 +20,7 @@
             <div class="room-num-rooms"><%= rooms.length %> Room(s)</div>
           </div>
           <i class="fa fa-th-list"></i>
-        </div> <!-- end room-header -->
+        </div> end room-header -->
 
         <div class="room-create clearfix" style="border-bottom: 2px solid white;">
           <input type="text" name="title" autofocus placeholder ="Type a new room">
@@ -41,12 +41,12 @@
           </ul>
         </div> <!-- end room-list -->
 
-        <div class="privateroom-list">
+        <div class="room-list">
           <ul>
             <% if(users.length > 0) { %>
               <% users.forEach(function(user) { %>
-                  <a href="/chat/<%= user.id %>">
-                    <li class="user-item"><%= (user.username.length > 25? user.username.substr(0, 25) + '...': user.username) %></li>
+                  <a href="/privateroom/<%= user.id %>">
+                    <li class="room-item"><%= (user.username.length > 25? user.username.substr(0, 25) + '...': user.username) %></li>
                   </a>
                 <% }); %>
             <% }  %>
