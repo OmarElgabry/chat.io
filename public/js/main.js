@@ -97,7 +97,7 @@ var app = {
           };
 
           console.log("sending img");
-          socket.emit("newMessage", message);
+          socket.emit("newMessage", roomId, message);
           image = null;
           app.helpers.addMessage(message);
         }
