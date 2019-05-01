@@ -26,6 +26,8 @@
 
         <div class="chat-message clearfix">
           <textarea name="message" placeholder ="Type your message" rows="3"></textarea>
+          <input type="file" id="input" name="input">
+          <img style=" width:200px;" src="" id="output">
           <button type="submit">Send</button>
         </div> <!-- end chat-message -->
       </div> <!-- end chat -->
@@ -43,6 +45,32 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/main.js"></script>
-    <script>$(function(){app.chat('<%= room.id %>', '<%= user.username %>')});</script>
+    <script>
+            // var socket = io.connect('http://localhost:3000');
+            //
+            // // Get DOM elements
+            // var input = document.getElementById("input");
+            // var output = document.getElementById("output");
+            //
+            // var image = null;
+            // // Listen to file input events
+            // document.getElementById("input").addEventListener("change", function (event) {
+            //   // Prepeare file reader
+            //   var file = event.target.files[0];
+            //   var fileReader = new FileReader();
+            //   fileReader.onloadend = function (event) {
+            //     // Send an image event to the socket
+            //     image = event.target.result
+            //     output.src = image;
+            //
+            //     //console.log("sending img");
+            //     //socket.emit('chat_image', image);
+            //   };
+            //   // Read file
+            //   fileReader.readAsDataURL(file);
+            // });
+
+            $(function(){app.chat('<%= room.id %>', '<%= user.username %>')});
+    </script>
   </body>
 </html>
