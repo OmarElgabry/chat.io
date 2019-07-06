@@ -61,6 +61,29 @@ Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.co
 	```
 Your app should now be running on [localhost:3000](http://localhost:3000/).
 
+### Running with Docker
+Make sure you have [Docker](https://www.docker.com/) and [Docker compose](https://docs.docker.com/compose/) installed.
+
+1. Clone or Download the repository
+
+	```
+	$ git clone https://github.com/OmarElGabry/chat.io.git
+	$ cd chat.io
+	```
+2. Install Dependencies
+
+	```
+	$ npm install
+	```
+3. Edit configuration value in _docker-compose.yml_ with your credentials(see [Setup Configurations](#configurations)).
+
+4. Start application
+    ```
+    $ docker-compose up -d
+    $ docker-compose exec app bash -c "cd /usr/src/app && npm start"
+    ```
+Your app should now be running on [localhost:3000](http://localhost:3000/).
+
 ### Deploying to Heroku
 Make sure you have the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
 

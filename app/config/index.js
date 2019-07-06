@@ -4,7 +4,7 @@ var init = function () {
 
 	if(process.env.NODE_ENV === 'production') {
 		var redisURI 		= require('url').parse(process.env.REDIS_URL);
-		var redisPassword 	= redisURI.auth.split(':')[1];
+		var redisPassword 	= redisURI.auth && redisURI.auth.split(':')[1];
 		return {
 			db: {
 				username: process.env.dbUsername,
